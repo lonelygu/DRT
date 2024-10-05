@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка текста</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="checker">
+        <h1>Проверка текста статьи</h1>
+        <p>Введите текст для проверки:</p>
+
+        <form id="article-form" method="POST">
+            <label for="article-input">Введите текст статьи:</label>
+            <textarea id="article-input" name="article" placeholder="Введите текст статьи здесь" required></textarea>
+            <button type="submit">Проверить</button>
+        </form>
+
+        {% if api_response %}
+        <div class="api-response">
+            <h2>Ответ от API:</h2>
+            <p><strong>Данные являются:</strong> {{ api_response.predicted_class }}</p>
+            <p><strong>Вероятность:</strong> {{ (api_response.predicted_probability | float * 100) }}%</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
