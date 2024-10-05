@@ -21,7 +21,7 @@
         <div class="api-response">
             <h2>Ответ от API:</h2>
             <p><strong>Данные являются:</strong> {{ api_response.predicted_class }}</p>
-            <p><strong>Вероятность:</strong> {{ (api_response.predicted_probability | float * 100) }}%</p>
+            <p><strong>Вероятность:</strong> {{ api_response.predicted_probability }}%</p>
         </div>
         {% endif %}
     </div>
