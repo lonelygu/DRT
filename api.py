@@ -33,9 +33,14 @@ async def predict_price(request: PredictRequest):
         prediction_result = "Фейк"
     else:
         prediction_result = "Правда"
-
+    try:
+        predicted_probability = int(predicted_probability)
+    except Exception as e:
+        predicted_probability = f"{predicted_probability:.2f}"
+        
     return {"predicted_class": prediction_result, 
-            "predicted_probability": f"{predicted_probability:.2f}"}
+            "predicted_probability": predicted_probability
+            }
 
 if __name__ == "__main__":
     uvicorn.run(app)
