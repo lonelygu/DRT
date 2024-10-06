@@ -132,7 +132,7 @@ def check():
         }
 
         # URL API
-        url = "https://fakeapi-49bf0c6b.b4a.run/predict"
+        url = "https://fastapi-service:5000/predict"
 
         # Отправка POST-запроса
         response = requests.post(url, json=data)
