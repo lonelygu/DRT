@@ -109,3 +109,15 @@ textarea {
     border-radius: 4px;
     background-color: #333;
 }
+
+/* Стили для класса explanation */
+.explanation {
+    line-height: 1.2; /* Высота строки */
+    font-size: 25px; /* Размер шрифта */
+    color: #ffffff; /* Цвет текста */
+    background-color: #1e1e1e; /* Цвет фона (по желанию) */
+    padding: 10px; /* Отступы вокруг текста */
+    border-radius: 4px; /* Скругление углов */
+    border: 1px solid #444; /* Граница */
+    margin-top: 20px; /* Отступ сверху */
+}

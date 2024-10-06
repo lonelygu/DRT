@@ -37,7 +37,7 @@
             <p><strong>Статья </strong> {{ api_response.predicted_class | lower }}</p>
             <p><strong>Вероятность:</strong> {{ api_response.predicted_probability }}%</p>
             {% if proof %}
-            <p style="line-height: 1.2; font-size: 25px;"><strong>Доказательство:</strong> <br> {{ proof }}</p>
+                <p class="explanation"><strong>Доказательство:</strong> <br> {{ proof }}</p>
             {% endif %}
         </div>
         {% endif %}

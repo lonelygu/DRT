@@ -9,6 +9,10 @@ import asyncio
 import requests
 import json
 
+text = ("Мы представляем вам сервис: FactSeeker\nНи для кого не секрет, что актуальность проблемы распространения фейков в интернете в наше время достигла своего пика."
+        " Все мы ежедневно сталкиваемся с ложными новостями, и не всегда задумываемся, насколько негативно, они могут повлиять на наше общество."
+        " А ведь известно множество случаев по всему миру, когда люди верили и распространяли фейковые новости, тем самым провоцируя межнациональные конфликты или финансовые кризисы.")
+
 async def set_commands(bot: Bot):
     commands = [
         BotCommand(
@@ -35,7 +39,7 @@ def button_builder(Button):
 async def get_start(message: Message, bot: Bot):
     await set_commands(bot)
     await asyncio.sleep(0.5)
-    await message.answer(f"Здравствуйте {message.from_user.first_name} //text")
+    await message.answer(f"Здравствуйте {message.from_user.first_name} {text}\n Вы можете проверить любую информацию с помощью /check $info")
 
 
 def build_request(article):
@@ -84,30 +88,31 @@ def build_request(article):
 
 async def get_truth(message: Message, bot: Bot):
     article = message.text  # Получаем текст статьи
+    if message.text.strip() != "/check":
+        # Формируем данные для отправки на API
+        data = {
+            "article": article
+        }
 
-    # Формируем данные для отправки на API
-    data = {
-        "article": article
-    }
-
-    url = "https://apitest-vh69sn31.b4a.run/predict"
-    try:
-        # Отправляем запрос к API
-        response = requests.post(url, json=data)
-        proof = None
-        # Проверяем ответ
-        if response.status_code == 200:
-            api_response = response.json()
-            print(api_response)
-            if api_response.get("predicted_class") == "Фейк":
-                proof = build_request(article=article)
-                result_text = f"⚠️ Эта статья выглядит как фейк.\n\nОбъяснение: {proof}"
+        url = "https://apitest-vh69sn31.b4a.run/predict"
+        try:
+            # Отправляем запрос к API
+            response = requests.post(url, json=data)
+            proof = None
+            # Проверяем ответ
+            if response.status_code == 200:
+                api_response = response.json()
+                if api_response.get("predicted_class") == "Фейк":
+                    proof = build_request(article=article)
+                    result_text = f"⚠️ Эта статья выглядит как фейк.\n\nОбъяснение: {proof}"
+                else:
+                    result_text = "✅ Эта статья не является фейком."
             else:
-                result_text = "✅ Эта статья не является фейком."
-        else:
-            result_text = "Произошла ошибка при обращении к API. Попробуйте снова позже."
-    except Exception as e:
-        result_text = f"Произошла ошибка при запросе к API:{e}"
+                result_text = "Произошла ошибка при обращении к API. Попробуйте снова позже."
+        except Exception as e:
+            result_text = f"Произошла ошибка при запросе к API:{e}"
+    else:
+        result_text = "Введите текст после /check"
 
     # Отправляем результат обратно пользователю
     await message.answer(result_text)
