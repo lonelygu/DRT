@@ -94,7 +94,7 @@ async def get_truth(message: Message, bot: Bot):
             "article": article
         }
 
-        url = "https://apitest-vh69sn31.b4a.run/predict"
+        url = "https://fakeapi-49bf0c6b.b4a.run"
         try:
             # Отправляем запрос к API
             response = requests.post(url, json=data)

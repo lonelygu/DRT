@@ -63,7 +63,7 @@ def check():
         }
 
         # URL API
-        url = "https://apitest-vh69sn31.b4a.run/predict"
+        url = "https://fakeapi-49bf0c6b.b4a.run"
 
         # Отправка POST-запроса
         response = requests.post(url, json=data)
