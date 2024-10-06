@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка текста</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='check_menu_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_menu_style.css') }}">
+
+    <!-- Добавление иконок сайта -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='log2.svg') }}">
+    <style>
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .name-column {
+            width: 30%;
+        }
+        .url-column {
+            width: 50%;
+        }
+        .verdict-column {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="/main">
+                <img src="{{ url_for('static', filename='log2.svg') }}" alt="" width="120" height="120">
+            </a>
+        </div>
+        <a href="/check" class="nav-button">
+            Вернуться к проверке
+        </a>
+    </header>
+
+    <div class="checker">
+        <h1>Список ресурсов</h1>
+
+        <table>
+            <tbody>
+                {% if resources | selectattr('truth', 'equalto', 'Фейк') | list %}
+                <tr>
+                    <td colspan="3"><h2>Дезинформация</h2></td>
+                </tr>
+                <tr>
+                    <th class="name-column">Имя</th>
+                    <th class="url-column">Ссылка</th>
+                    <th class="verdict-column">Вердикт</th>
+                </tr>
+                {% for resource in resources if resource.truth == 'Фейк' %}
+                <tr>
+                    <td class="name-column">{{ resource.name }}</td>
+                    <td class="url-column"><a href="{{ resource.url }}" title="{{ resource.url }}">{{ resource.url }}</a></td>
+                    <td class="verdict-column" style="color: red;">&#10060;</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                
+                {% if resources | selectattr('truth', 'equalto', 'Правда') | list %}
+                <tr>
+                    <td colspan="3"><h2>Достоверные источники</h2></td>
+                </tr>
+                <tr>
+                    <th class="name-column">Имя</th>
+                    <th class="url-column">Ссылка</th>
+                    <th class="verdict-column">Вердикт</th>
+                </tr>
+                {% for resource in resources if resource.truth == 'Правда' %}
+                <tr>
+                    <td class="name-column">{{ resource.name }}</td>
+                    <td class="url-column"><a href="{{ resource.url }}" title="{{ resource.url }}">{{ resource.url }}</a></td>
+                    <td class="verdict-column" style="color: green;">&#9989;</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                
+                {% if resources | selectattr('truth', 'equalto', 'Неизвестно') | list %}
+                <tr>
+                    <td colspan="3"><h2>Недостаточно сведений</h2></td>
+                </tr>
+                <tr>
+                    <th class="name-column">Имя</th>
+                    <th class="url-column">Ссылка</th>
+                    <th class="verdict-column">Вердикт</th>
+                </tr>
+                {% for resource in resources if resource.truth == 'Неизвестно' %}
+                <tr>
+                    <td class="name-column">{{ resource.name }}</td>
+                    <td class="url-column"><a href="{{ resource.url }}" title="{{ resource.url }}">{{ resource.url }}</a></td>
+                    <td class="verdict-column" style="color: orange;">&#10067;</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

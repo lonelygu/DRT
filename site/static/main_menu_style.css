@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #490e65, #29259a); /* Начальные цвета градиента */
     background-size: 200% 200%;
-    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
+    animation: gradientAnimation 120s ease infinite; /* Анимация градиента */
     color: #fff;
     text-align: center;
 }
@@ -29,7 +29,7 @@ body {
 /* Основной контейнер */
 .main-container {
     padding: 50px 20px;
-    max-width: 900px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -40,7 +40,6 @@ body {
 
 .logo {
     max-width: 120px;
-    margin-bottom: 20px;
 }
 
 .header h1 {
@@ -55,7 +54,7 @@ body {
 
 /* Основная кнопка */
 .main-button {
-    background-color: #0d6efd;
+    background-color: #7b3f97;
     color: #fff;
     padding: 15px 30px;
     border-radius: 8px;
@@ -65,7 +64,7 @@ body {
 }
 
 .main-button:hover {
-    background-color: #0a58ca;
+    background-color: #69277e;
 }
 
 /* Секция "О сервисе" */

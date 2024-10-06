@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проверка текста</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='check_menu_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_menu_style.css') }}">
 
     <!-- Добавление иконок сайта -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='log2.svg') }}">
@@ -12,26 +13,29 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="{{ url_for('static', filename='log2.svg') }}" alt="SVG Иконка" width="100" height="100">
+            <a href="/main">
+                <img src="{{ url_for('static', filename='log2.svg') }}" alt="logo" width="120" height="120">
+            </a>
         </div>
-        <nav class="navbar">
-            <a href="/main" class="nav-button">Главная</a>
-            <a href="/check" class="nav-button">Проверка</a>
-        </nav>
+        <a href="/base" class="nav-button">
+            Список ресурсов
+        </a>
     </header>
 
     <div class="checker">
         <h1>Проверка статьи</h1>
 
         <form id="article-form" method="POST">
-            <textarea id="article-input" name="article" placeholder="Введите текст статьи здесь" required>{{ request.form.article }}</textarea>
-            <button type="submit" class="button">Проверить</button>
+            <textarea id="article-input" name="article" placeholder="Вставьте текст статьи в поле для ввода" required>{{ request.form.article }}</textarea>
+            <p> Укажите ссылку на источник статьи, если он есть</p>
+            <input type="text" id="source" name="source-input" placeholder="Ссылка на статью">
+            <button type="submit" class="main-button">Проверить</button>
         </form>
 
         {% if api_response %}
         <div class="api-response">
-            <h2>Ответ от API:</h2>
-            <p><strong>Статья </strong> {{ api_response.predicted_class | lower }}</p>
+            <h2>Вердикт:</h2>
+            <p><strong style="color: {{ 'red' if api_response.predicted_class == 'Фейк' else 'green' }}">Статья </strong> <span style="color: {{ 'red' if api_response.predicted_class == 'Фейк' else 'green' }}"><strong>{{ api_response.predicted_class | lower }}</strong></span></p>
             <p><strong>Вероятность:</strong> {{ api_response.predicted_probability }}%</p>
             {% if proof %}
                 <p class="explanation"><strong>Доказательство:</strong> <br> {{ proof }}</p>

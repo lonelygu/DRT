@@ -8,7 +8,6 @@ html, body {
 body {
     background: linear-gradient(45deg, #000080, #4b0082, #6a0dad, #800080); /* Синий к фиолетовому */
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite; /* Анимация для перелива */
     color: #ffffff;
     font-family: Arial, sans-serif;
     display: flex; /* Используем flexbox для выравнивания контента */
@@ -95,15 +94,15 @@ input[type="text"]:focus, textarea:focus {
 
 .nav-button {
     padding: 10px 20px;
-    background-color: rgba(0, 0, 139, 0.7); /* Полупрозрачный тёмно-синий */
+    background-color: #7b3f97;
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
-    background-color: rgba(0, 0, 139, 0.9);
+    background-color: #69277e;
 }
 
 /* Стили для текстового поля */
