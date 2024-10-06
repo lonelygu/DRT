@@ -1,7 +1,5 @@
 # DRT
 
-Инструкция по развертыванию API:
+Для развертывания сервисов:
 
-docker build -t api:latest .
-
-docker run -p 3000:3000 api:latest
+docker-compose up --build
