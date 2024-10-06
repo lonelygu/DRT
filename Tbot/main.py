@@ -94,7 +94,7 @@ async def get_truth(message: Message, bot: Bot):
             "article": article
         }
 
-        url = "https://fakeapi-49bf0c6b.b4a.run"
+        url = "https://fastapi-service:5000/predict"
         try:
             # Отправляем запрос к API
             response = requests.post(url, json=data)
