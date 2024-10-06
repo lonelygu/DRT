@@ -26,7 +26,6 @@ def check():
         # Проверка ответа
         if response.status_code == 200:
             api_response = response.json()  # Получаем ответ от API в формате JSON
-            print("API Response:", api_response)  # Выводим ответ в консоль для отладки
             return render_template('check.html', article=article, api_response=api_response)
         else:
             return render_template('check.html', article=article, api_response={"error": "Ошибка при запросе к API"})
