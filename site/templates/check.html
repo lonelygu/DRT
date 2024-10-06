@@ -18,19 +18,17 @@
     </header>
 
     <div class="checker">
-        <h1>Проверка текста статьи</h1>
-        <p>Введите текст для проверки:</p>
+        <h1>Проверка статьи</h1>
 
         <form id="article-form" method="POST">
-            <label for="article-input">Введите текст статьи:</label>
-            <textarea id="article-input" name="article" placeholder="Введите текст статьи здесь" required></textarea>
-            <button type="submit">Проверить</button>
+            <textarea id="article-input" name="article" placeholder="Введите текст статьи здесь" required>{{ request.form.article }}</textarea>
+            <button type="submit" style="margin-top: 10px; font-size: 20px;">Проверить</button>
         </form>
 
         {% if api_response %}
         <div class="api-response">
             <h2>Ответ от API:</h2>
-            <p><strong>Данные являются:</strong> {{ api_response.predicted_class }}</p>
+            <p><strong>Статья </strong> {{ api_response.predicted_class | lower }}</p>
             <p><strong>Вероятность:</strong> {{ api_response.predicted_probability }}%</p>
         </div>
         {% endif %}
