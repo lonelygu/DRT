@@ -99,11 +99,8 @@ async def get_truth(message: Message, bot: Bot):
         if response.status_code == 200:
             api_response = response.json()
             print(api_response)
-            predicted_class = api_response.get("predicted_class", "Неизвестно")
-            explanation = api_response.get("explanation", "Нет объяснения")
             if api_response.get("predicted_class") == "Фейк":
                 proof = build_request(article=article)
-            if predicted_class == "Фейк":
                 result_text = f"⚠️ Эта статья выглядит как фейк.\n\nОбъяснение: {proof}"
             else:
                 result_text = "✅ Эта статья не является фейком."
