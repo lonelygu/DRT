@@ -132,10 +132,10 @@ def check():
         }
 
         # URL API
-        url = "https://fastapi-service:5000/predict"
+        url = "http://fastapi-service:5000/predict"
 
         # Отправка POST-запроса
-        response = requests.post(url, json=data)
+        response = requests.post(url, verify=False, json=data)
         proof = None
         # Проверка ответа
         if response.status_code == 200:
