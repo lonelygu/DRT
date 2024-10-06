@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проверка текста</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='check_menu_style.css') }}">
 
     <!-- Добавление иконок сайта -->
-    <link rel="icon" href="{{ url_for('static', filename='android-chrome-512x512.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='android-chrome-512x512.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='android-chrome-512x512.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='log.svg') }}">
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <img src="{{ url_for('static', filename='android-chrome-512x512.png') }}" alt="Логотип">
+            <img src="{{ url_for('static', filename='log.svg') }}" alt="SVG Иконка" width="100" height="100">
         </div>
         <nav class="navbar">
             <a href="/main" class="nav-button">Главная</a>

@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструмент распознавания дезинформации</title>
+    <title>FactSeeker</title>
 
     <!-- Подключение CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
-    <!-- Добавление иконок сайта -->
-    <link rel="icon" href="{{ url_for('static', filename='android-chrome-512x512.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='android-chrome-512x512.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='android-chrome-512x512.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_menu_style.css') }}">
+    <!-- Установка SVG в качестве иконки сайта -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='log.svg') }}">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='android-chrome-512x512.png') }}" alt="Логотип">
-        </div>
-        <nav class="navbar">
-            <a href="/main" class="nav-button">Главная</a>
-            <a href="/check" class="nav-button">Проверка</a>
-        </nav>
-    </header>
+    <div class="main-container">
+        <header class="header">
+            <img src="{{ url_for('static', filename='log.svg') }}" alt="SVG Иконка" width="100" height="100">
+            <h1>FactSeeker</h1>
+            <p>Инструмент распознавания информации</p>
+            <a href="/check" class="main-button">Перейти к проверке</a>
+        </header>
 
-    <div class="container">
-        <h1>Инструмент распознавания дезинформации</h1>
-        <a href="/check" class="button">Перейти к проверке</a>
+        <section class="about">
+            <h2>О сервисе:</h2>
+            <p>FactSeeker - сервис, который позволяет проверять достоверность той или иной информации с помощью собственной нейросети. Сервис постоянно обучается, при появлении новых новостей из проверенных источников сразу же можно выявить точную и неточную информацию.<p>
+            <h2>Что делает данный сервис?</h2>
+            <p>Сервис позволяет обработать информацию с помощью нейронной сети на выявление точности и неточности в процентном соотношении, а также сделать вывод, является ли данная информация правдивой или ложной</p>
+            <h1>Имеем свой API!</h1>
+            <p>FactSeeker имеет свой собственный API. Благодаря данному подходу, можно подключить FactSeeker к чему угодно. Например, к соцсетям для проверки правды или лжи.</p>
+        </section>
     </div>
 </body>
 </html>

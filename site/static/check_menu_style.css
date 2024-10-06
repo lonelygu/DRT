@@ -1,0 +1,141 @@
+/* Основные стили для страницы */
+html, body {
+    height: 100%; /* Устанавливаем 100% высоту для html и body */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(45deg, #000080, #4b0082, #6a0dad, #800080); /* Синий к фиолетовому */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Анимация для перелива */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex; /* Используем flexbox для выравнивания контента */
+    flex-direction: column; /* Контент располагается вертикально */
+    justify-content: flex-start; /* Начинаем размещение контента сверху */
+    min-height: 100vh; /* Минимальная высота - 100% высоты окна */
+}
+
+/* Анимация градиента */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Контейнер с основным контентом */
+.container, .checker {
+    max-width: 600px;
+    margin: 20px auto; /* Центрируем контейнер с отступами */
+    padding: 20px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный фон */
+    text-align: center;
+    box-shadow: none; /* Убираем тень */
+}
+
+/* Убираем обводку у текстовых полей */
+input[type="text"], textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none; /* Убираем границу */
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    color: #ffffff; /* Цвет текста */
+    box-sizing: border-box;
+}
+
+/* Убираем обводку при фокусе */
+input[type="text"]:focus, textarea:focus {
+    outline: none; /* Убираем обводку */
+    border-color: transparent; /* Убираем цвет границы */
+}
+
+/* Кнопка без обводки */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 139, 0.7); /* Полупрозрачный тёмно-синий */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none; /* Убираем рамку */
+    outline: none; /* Убираем обводку при фокусе */
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 139, 0.9); /* Больше насыщенности при наведении */
+}
+
+/* Шапка с кнопками и логотипом */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color: rgba(42, 42, 42, 0.7); /* Полупрозрачный тёмный фон */
+    box-shadow: none;
+    position: relative;
+}
+
+/* Логотип */
+.logo img {
+    height: 50px; /* Размер логотипа */
+    margin-right: 20px;
+}
+
+/* Кнопки навигации */
+.navbar {
+    display: flex;
+    gap: 10px; /* Расстояние между кнопками */
+}
+
+.nav-button {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 139, 0.7); /* Полупрозрачный тёмно-синий */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 139, 0.9);
+}
+
+/* Стили для текстового поля */
+textarea {
+    width: 100%; /* Занимает всю доступную ширину */
+    height: 150px; /* Высота текстового поля */
+    padding: 10px; /* Внутренние отступы */
+    border: none; /* Убираем границу */
+    border-radius: 8px; /* Скругленные углы */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    color: #ffffff; /* Цвет текста */
+    font-size: 16px; /* Размер шрифта */
+    line-height: 1.5; /* Межстрочный интервал */
+    box-sizing: border-box; /* Включает отступы и рамки в общую ширину/высоту */
+    resize: vertical; /* Разрешает только вертикальное изменение размера */
+}
+
+/* Стили для вывода результата */
+.output {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(51, 51, 51, 0.7); /* Полупрозрачный фон */
+}
+
+/* Стили для класса explanation */
+.explanation {
+    line-height: 1.2; /* Высота строки */
+    font-size: 25px; /* Размер шрифта */
+    color: #ffffff; /* Цвет текста */
+    background-color: rgba(30, 30, 30, 0.7); /* Полупрозрачный фон */
+    padding: 10px; /* Отступы вокруг текста */
+    border-radius: 4px; /* Скругление углов */
+    margin-top: 20px; /* Отступ сверху */
+}
