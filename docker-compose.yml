@@ -1,0 +1,19 @@
+version: '3'
+services:
+  fastapi-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fastapi-service
+    ports:
+      - "5000:5000"
+
+  flask-service:
+    build:
+      context: ./site
+      dockerfile: Dockerfile
+    container_name: flask-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - fastapi-service 

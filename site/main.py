@@ -63,7 +63,7 @@ def check():
         }
 
         # URL API
-        url = "https://fakeapi-49bf0c6b.b4a.run"
+        url = "https://fakeapi-49bf0c6b.b4a.run/predict"
 
         # Отправка POST-запроса
         response = requests.post(url, json=data)
@@ -80,4 +80,4 @@ def check():
     return render_template('check.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=3000)
